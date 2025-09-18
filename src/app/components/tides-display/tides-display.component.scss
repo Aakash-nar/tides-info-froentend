@@ -1,0 +1,42 @@
+.station-card {
+  margin-bottom: 20px;
+}
+
+.tide-info {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  
+  .tide-item {
+    text-align: center;
+    padding: 16px;
+    
+    .tide-icon {
+      font-size: 2.5em;
+      display: block;
+      margin-bottom: 8px;
+    }
+    
+    .tide-time {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    
+    .tide-type {
+      text-transform: uppercase;
+      font-size: 0.9em;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+.current-time {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 1.1em;
+  
+  .time-until {
+    font-weight: bold;
+    color: #3f51b5;
+  }
+}

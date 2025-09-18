@@ -1,0 +1,36 @@
+<mat-card *ngIf="station" class="station-card">
+  <mat-card-header>
+    <mat-card-title>{{ station.name }} Tide Information</mat-card-title>
+    <mat-card-subtitle>
+      {{ station.latitude | number:'1.4-4' }}°N, {{ station.longitude | number:'1.4-4' }}°W
+      <span *ngIf="station.distance"> • {{ station.distance | number:'1.1-1' }} miles away</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="current-info">
+      <p class="current-time">Current Time: {{ currentTime }}</p>
+      <p class="tide-status">Tide is currently <strong>{{ tideStatus }}</strong></p>
+    </div>
+
+    <div class="tide-info">
+      <div class="tide-item" *ngIf="nextHighTide">
+        <span class="tide-icon" [class.high-tide]="nextHighTide.type === 'high'">📈</span>
+        <p class="tide-type">Next High Tide</p>
+        <p class="tide-time">{{ nextHighTide.time | date:'shortTime' }}</p>
+        <p class="tide-height">{{ nextHighTide.height | number:'1.2-2' }} ft</p>
+      </div>
+
+      <div class="tide-item" *ngIf="nextLowTide">
+        <span class="tide-icon" [class.low-tide]="nextLowTide.type === 'low'">📉</span>
+        <p class="tide-type">Next Low Tide</p>
+        <p class="tide-time">{{ nextLowTide.time | date:'shortTime' }}</p>
+        <p class="tide-height">{{ nextLowTide.height | number:'1.2-2' }} ft</p>
+      </div>
+    </div>
+
+    <div class="next-tide" *ngIf="timeUntilNextTide">
+      <p>Next {{ nextTideType }} tide is {{ timeUntilNextTide }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

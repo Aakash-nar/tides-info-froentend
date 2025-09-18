@@ -1,0 +1,45 @@
+<div class="tide-chart-container">
+  <div *ngIf="!predictions || predictions.length === 0" class="no-data-message">
+    <mat-icon>water</mat-icon>
+    <p>No tide data available</p>
+  </div>
+  
+  <div *ngIf="predictions && predictions.length > 0" class="chart-wrapper">
+    <div class="chart-header">
+      <h3>Tide Predictions</h3>
+      <div class="chart-legend">
+        <div class="legend-item">
+          <span class="legend-color high-tide"></span>
+          <span>High Tide</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color low-tide"></span>
+          <span>Low Tide</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="chart-canvas">
+      <canvas #tideChart></canvas>
+    </div>
+    
+    <div class="chart-info" *ngIf="predictions && predictions.length > 0">
+      <div class="info-item">
+        <mat-icon>schedule</mat-icon>
+        <span>Next High Tide: {{getNextTideTime('high')}}</span>
+      </div>
+      <div class="info-item">
+        <mat-icon>schedule</mat-icon>
+        <span>Next Low Tide: {{getNextTideTime('low')}}</span>
+      </div>
+      <div class="info-item">
+        <mat-icon>trending_up</mat-icon>
+        <span>Max Height: {{getMaxTideHeight()}} ft</span>
+      </div>
+      <div class="info-item">
+        <mat-icon>trending_down</mat-icon>
+        <span>Min Height: {{getMinTideHeight()}} ft</span>
+      </div>
+    </div>
+  </div>
+</div>
